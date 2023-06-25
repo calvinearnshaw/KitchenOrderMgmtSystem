@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/kiosk-styles.css">
+    <title>Kiosk</title>
+  </head>
+  <body>
+    <section class="mainBody">
+      <img class="companyLogo" src="media/kiosk/companyLogo/companyLogo.png">
+      <div class="welcomePanel">
+        <h1>Hey!</h1>
+        <h2>What are you ordering today?</h2>
+      </div>
+      <div class="categories">
+        <!-- Insert shortcut menu options here -->
+        <a class="catCard" id="newItemsCC">
+          <img src="media/kiosk/catIcons/newItems.png">
+          <p>What's New</p>
+        </a>
+        <a class="catCard" id="dealsCC">
+          <img src="media/kiosk/catIcons/cheapFood.png">
+          <p>Deals</p>
+        </a>
+        <a class="catCard" id="burgersCC">
+          <img src="media/kiosk/catIcons/burgers.png">
+          <p>Burgers</p>
+        </a>
+        <a class="catCard" id="nuggetsCC">
+          <img src="media/kiosk/catIcons/nuggets.png">
+          <p>Chicken Nuggets</p>
+        </a>
+        <a class="catCard" id="wrapsCC">
+          <img src="media/kiosk/catIcons/wraps.png">
+          <p>Wraps</p>
+        </a>
+        <a class="catCard" id="saladsCC">
+          <img src="media/kiosk/catIcons/salad.png">
+          <p>Salads</p>
+        </a>
+        <a class="catCard" id="friesCC">
+          <img src="media/kiosk/catIcons/fries.png">
+          <p>Fries and Sides</p>
+        </a>
+        <a class="catCard" id="dessertsCC">
+          <img src="media/kiosk/catIcons/desserts.png">
+          <p>Desserts</p>
+        </a>
+      </div>
+      <div class="popularItems">
+        <h2>Popular</h2>
+        <a class="itemCard" id="item-cheeseburger">
+          <img src="media/kiosk/menuItems/burgers/cheeseburger.png">
+          <p class="itemDesc">Cheeseburger</p>
+          <p class="itemPrice">£2.49</p>
+        </a>
+        <a class="itemCard" id="item-stackburger">
+          <img src="media/kiosk/menuItems/burgers/double-burger.png">
+          <p class="itemDesc">Stack Burger</p>
+          <p class="itemPrice">£2.99</p>
+        </a>
+        <a class="itemCard" id="item-chknug">
+          <img src="media/kiosk/menuItems/chicken/chickennugget.png">
+          <p class="itemDesc">Chicken Nuggets</p>
+          <p class="itemPrice">£1.49</p>
+        </a>
+        <a class="itemCard" id="item-chkburger">
+          <img src="media/kiosk/menuItems/chicken/chicken-burger.png">
+          <p class="itemDesc">Chicken Burger</p>
+          <p class="itemPrice">£2.49</p>
+        </a>
+        <a class="itemCard" id="item-chkwrap">
+          <img src="media/kiosk/menuItems/wraps/ranch-chicken-wrap.png">
+          <p class="itemDesc">Chicken Wrap</p>
+          <p class="itemPrice">£1.99</p>
+        </a>
+      </div>
+    </section>
+    <section class="basket" style="display:block;">
+      <h2>My Order</h2>
+      <div class="basketContainer">
+        <div class="orderEntry">
+          <img src="media/kiosk/menuItems/chicken/chicken-burger.png">
+          <div class="entryDetails">
+            <p class="entryDesc">Chicken Burger</p>
+            <p class="entryPrice">£2.49</p>
+            <div class="entryQty">
+              <a class="qtyDecrease">-</a>
+              <p>1</p>
+              <a class="qtyIncrease">+</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+    </script>
+    <script src="js/custkiosk.js"></script>
+  </body>
+</html>

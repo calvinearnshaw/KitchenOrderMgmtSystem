@@ -1,0 +1,68 @@
+.orders {
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 50px);
+    overflow: hidden;
+}
+
+.activeOrders {
+    width: 60%;
+    padding: 10px;
+}
+
+.completedOrders {
+    width: 40%;
+    padding: 10px;
+}
+
+h1 {
+    font-family: Arial, sans-serif;
+    font-weight: Bold;
+    font-size: 3em;
+}
+
+p {
+    font-size: 1.8em;
+    font-family: Arial, sans-serif;
+    font-weight: Bold;
+}
+
+.completedOrders p {
+    color: green;
+}
+
+.completedOrders h1 {
+    background-color: green;
+    color: white;
+    margin: -10px;
+    padding: 10px;
+}
+
+.activeOrders p {
+    color: black;
+}
+
+.activeOrders h1 {
+    background-color: black;
+    color: white;
+    margin: -10px;
+    padding: 10px;
+}
+
+.activeContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: calc(90vh - 100px);
+    column-gap: 20px;
+    padding: 20px;
+}
+
+.completedContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: calc(90vh - 100px);
+    column-gap: 20px;
+    padding: 20px;
+}

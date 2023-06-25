@@ -1,0 +1,197 @@
+html {
+    background-color: black;
+}
+
+body {
+    display: flex;
+    font-family: 'Avenir Next', Arial, sans-serif;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+
+.mainBody {
+    width: 60%;
+}
+
+.companyLogo {
+    width: 100px;
+    margin-left: 20px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.welcomePanel {
+    margin-left: 20px;
+    margin-bottom: 50px;
+}
+
+.welcomePanel h1 {
+    font-weight: bold;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 20px;
+    gap: 20px;
+    margin-bottom: 50px;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.catCard {
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid red;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    line-height: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    max-width: 170px;
+    max-height: 170px;
+}
+
+.catCard p {
+    margin-bottom: 4px;
+}
+
+.catCard:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.catCard img {
+    width: 80%;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.popularItems {
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 50px;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.popularItems h2 {
+    font-weight: bold;
+    width: 100%;
+}
+
+.itemCard {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid lightgray;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    line-height: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    max-width: 130px;
+    min-width: 130px;
+    min-height: 130px;
+    max-height: 130px;
+}
+
+.itemCard img {
+    width: 70%;
+    aspect-ratio: 1/1;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.itemCard p {
+    margin-bottom: 7px;
+}
+
+.itemCard:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.basket {
+    width: 40%;
+    margin-top: 150px;
+    display: none;
+}
+
+.basket h2 {
+    margin: 20px 20px;
+}
+
+.basketContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    row-gap: 20px;
+}
+
+.orderEntry {
+    display: flex;
+    width: 100%;
+    background-color: #F1F1F1;
+    border: 1px solid #E0E0E0;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.orderEntry img {
+    width: 100px;
+    height: 100%;
+}
+
+.entryDetails {
+    margin-left: 10px;
+}
+
+.entryDesc {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.entryQty {
+    display: flex;
+    column-gap: 10px;
+}
+
+.entryQty p {
+    font-weight: bold;
+}
+
+.qtyIncrease, .qtyDecrease {
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid #E0E0E0;
+    width: 30px;
+    text-align: center;
+    height: 25px;
+    border-radius: 10px;
+    color: black;
+}
+
+.qtyIncrease {
+    background-color: gold;
+    border: 1px solid #E0E0E0;
+}

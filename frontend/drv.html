@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Driver</title>
+</head>
+<body>
+  <form id='newOrderForm'>
+    <label for="orderID">Order ID:</label>
+    <input type="text" id="orderID"><br>
+    <label for="orderDesc">Order Description:</label>
+    <textarea id="orderDesc" name="orderDesc" rows="4" cols="50"></textarea><br>
+    <label for="orderStatus">Order Status:</label>
+    <input type="text" id="orderStatus"><br>
+    <button type="submit" value="Submit">Submit</button>
+  </form>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const id = document.getElementById('orderID');
+    const desc = document.getElementById('orderDesc');
+    const status = document.getElementById('orderStatus');
+    const orderForm = document.getElementById('newOrderForm');
+    console.log(desc.value);
+    orderForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      socket.emit('new order', {
+        orderID: id.value,
+        orderDesc: desc.value,
+        orderStatus: status.value
+      });
+      id.clear;
+      desc.clear;
+      status.clear;
+    });
+  </script>
+</body>
+</html>
