@@ -77,21 +77,19 @@
         </a>
       </div>
     </section>
-    <section class="basket" style="display:block;">
-      <h2>My Order</h2>
+    <section class="basket" style="display:none;">
+      <div class="basketHeading">
+        <h2>My Order</h2>
+        <p id="basketQty">0</p>
+      </div>
       <div class="basketContainer">
-        <div class="orderEntry">
-          <img src="media/kiosk/menuItems/chicken/chicken-burger.png">
-          <div class="entryDetails">
-            <p class="entryDesc">Chicken Burger</p>
-            <p class="entryPrice">£2.49</p>
-            <div class="entryQty">
-              <a class="qtyDecrease">-</a>
-              <p>1</p>
-              <a class="qtyIncrease">+</a>
-            </div>
-          </div>
+      </div>
+      <div class="orderSummary">
+        <div class="orderTotal">
+          <p><b>Total:</b></p>
+          <p id="grandTotal">£0.00</p>
         </div>
+        <a class="orderPymtBtn"><p>Done</p></a>
       </div>
     </section>
     <script src="/socket.io/socket.io.js"></script>

@@ -139,11 +139,30 @@ body {
     margin: 20px 20px;
 }
 
+.basketHeading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 25px;
+}
+
+.basketHeading p {
+    background-color: gold;
+    margin-top: 15px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 15px;
+}
+
 .basketContainer {
     display: flex;
     flex-direction: column;
     margin: 20px;
     row-gap: 20px;
+    max-height: calc(100vh);
+    overflow: scroll;
 }
 
 .orderEntry {
@@ -180,7 +199,7 @@ body {
     font-weight: bold;
 }
 
-.qtyIncrease, .qtyDecrease {
+.qtyIncrease, .qtyDecrease, .deleteItm {
     text-decoration: none;
     background-color: white;
     border: 1px solid #E0E0E0;
@@ -194,4 +213,42 @@ body {
 .qtyIncrease {
     background-color: gold;
     border: 1px solid #E0E0E0;
+}
+
+.orderSummary {
+    position: sticky;
+    width: 85%;
+    margin: 20px;
+}
+
+.orderTotal {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -10px;
+}
+
+.orderPymtBtn {
+    background-color: gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    border-radius: 20px;
+}
+
+.orderPymtBtn:hover {
+    background-color: black;
+    color: white;
+}
+
+.orderPymtBtn p {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
 }
