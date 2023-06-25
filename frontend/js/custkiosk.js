@@ -104,8 +104,27 @@ function decreaseQty(entryID) {
     }
 }
 
-function completeOrder() {
+let dispatchedOrderID = 1;
 
+function completeOrder() {
+    let htmlOrderRequest = "";
+    for (let i = 0; i < order.length; i++) {
+        let line = `<p>${order[i].qty} ${order[i].desc}</p>`
+        htmlOrderRequest += line;
+    }
+    socket.emit('new order', {
+        orderID: dispatchedOrderID,
+        orderDesc: htmlOrderRequest,
+        orderStatus: 'Paid'
+    });
+    dispatchedOrderID++;
+    console.log(`Dispatched Order No. ${dispatchedOrderID - 1}`);
+    order = [];
+    orderTotal = 0.00;
+    document.getElementsByClassName('basketContainer')[0].innerHTML = "";
+    document.getElementById('basketQty').innerHTML = '0';
+    document.getElementById('grandTotal').innerHTML = '£' + orderTotal.toFixed(2);
+    document.getElementsByClassName('basket')[0].style.display = 'none';
 }
 
 document.getElementById('item-cheeseburger').onclick = function() {
@@ -128,6 +147,6 @@ document.getElementById('item-chkwrap').onclick = function() {
     addToOrder({desc: 'Chicken Wrap', price: 1.99});
 }
 
-document.getElementById('orderPymtBtn').onclick = function() {
+document.getElementById('dispatchOrderBtn').onclick = function() {
     completeOrder();
 }
