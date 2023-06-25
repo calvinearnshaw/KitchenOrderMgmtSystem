@@ -1,39 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/koms-styles.css">
-    <title>Kitchen Order Monitoring System</title>
-  </head>
-  <body>
-    <section class="komsNav" style="display:none;">
-      <nav>
-        <p><b>Developer menu. Press Q to hide.</b></p>
-        <ul>
-          <li><a href="drv.html">Driver</a></li>
-          <li><a href="custdisp.html">Order Progression Display</a></li>
-          <li><a href="custkiosk.html">Customer Order Kiosk</a></li>
-        </ul>
-        <p><i>Controls:</i></p>
-        <ul>
-          <li>Space: bump bar</li>
-          <li>C: open driver window</li>
-          <li>V: adjust zoom level</li>
-        </ul>
-      </nav>
-    </section>
-    <section class="ordersBacker">
-    </section>
-    <section class="stats">
-      <p id="currTime">00:00:00</p>
-      <p id="laneDesc">Lane X - ON/OFF - 0/0</p>
-      <p id="pendingOrders">0 pending...</p>
-    </section>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
-    </script>
-    <script src="js/komsclient.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/home-styles.css">
+        <title>KOMS</title>
+    </head>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">Kitchen Order Management System</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="kvs.html" target="_blank">Kitchen Order Monitor</a></li>
+                <li><a href="custdisp.html" target="_blank">Customer Order Monitor</a></li>
+                <li><a href="custkiosk.html" target="_blank">Customer Kiosk</a></li>
+            </ul>
+        </div>
+    </nav>
+    <body>
+        <br><br>
+        <header>
+            <h1><a href="https://www.github.com/calvinearnshaw/kitchenordermgmtsystem" target="_blank">KOMS</a></h1>
+            <h2>A Node.JS project by Calvin Earnshaw</h2>
+        </header>
+        <br>
+        <section class="introduction">
+            <h3>Introduction</h3>
+            <p>
+                This is a small Node.JS project I worked on during early Summer 2023. You may find the following
+                information useful whilst navigating this project.
+            </p>
+            <p>
+                This Kitchen Management System simulates a typical fast food restaurant, complete with a customer-facing
+                kiosk ordering system, a customer-facing order tracker, and kitchen order monitor.
+            </p>
+            <p>
+                Please note this project remains a <b>work in progress</b>, and should be treated as such. The project
+                uses the Socket.IO library to communicate information between each of the components of the system,
+                therefore each tab will <b>not save data</b> if refreshed.
+            </p>
+        </section>
+        <br>
+        <section class="howToUse">
+            <h3>How to Use</h3>
+            <p>
+                This guide assumes you have successfully started the Node.JS server, and have accessed this webpage
+                through your preferred web browser, using the address
+                <a href="https://localhost:6500/">https://localhost:6500</a>. Please note, however, that
+                <b>Google Chrome</b> is recommended.
+            </p>
+            <p>
+                Select any of the three menu items above to access the various areas of the system. These will open in
+                separate tabs.
+            </p>
+            <br>
+            <h4>Kitchen Order Monitor</h4>
+            <p>
+                To be displayed in the kitchen, contains a live feed of orders that are processed by the
+                <a href="custkiosk.html" target="_blank">kiosk</a>. Each order has its own timer, showing how long the
+                order has been waiting to be processed by the kitchen, as well as a visual red/green indicator to
+                visually indicate the time taken to process an order.
+            </p>
+            <p>
+                The Space Bar on your keyboard acts as a <i>'serve'</i> button. The typical use case is to press this
+                after an order's been made by the kitchen, and is ready to be served to the customer.
+            </p>
+            <p>
+                Pressing the 'V' key will alter the zoom level of the Kitchen Order Monitor, allowing for easier reading
+                of the information on-screen, especially if the monitor were to be mounted further away from the user.
+            </p>
+            <p>
+                Pressing the 'C' key will open a small popup window used for order intake testing, and won't serve part
+                of the final product.
+            </p>
+            <p>
+                Along the bottom of the Monitor, there is a live clock, an indicator of both the average and maximum
+                order processing times recorded since the Monitor was accessed, and an indicator of pending orders, which
+                will indicate white whenever there are pending orders that cannot be immediately displayed on the screen.
+            </p>
+            <br>
+            <h4>Customer Order Monitor</h4>
+            <p>
+                This provides a 'live' feed to customers relating to the progress of their order. Currently only has
+                two main sections - 'Preparing' and 'Please Collect', along with an order number.
+            </p>
+            <p>
+                This has no interactive parts - the order number will move automatically as soon as the serve button is
+                hit on the Kitchen Order Monitor. Once an order's been <i>served</i>, the customer order monitor will
+                clear the order number after 60 seconds.
+            </p>
+            <br>
+            <h4>Customer Kiosk</h4>
+            <p>
+                An interactive ordering system for customers to place their orders, styled similarly to that of typical
+                high street fast food chains. Allows products to be selected, quantities updated, and orders to be
+                processed.
+            </p>
+            <p>
+                This is currently a <b>work in progress</b>, with more features being introduced in due course, such
+                as:
+            </p>
+            <ul>
+                <li>Order Customisations</li>
+                <li>Food Categories (these buttons currently do not work)</li>
+            </ul>
+        </section>
+        <hr>
+        <footer>
+            <p>
+                Designed by <a href="https://www.github.com/calvinearnshaw" target="_blank">Calvin Earnshaw</a> in 2023.
+            </p>
+        </footer>
+    </body>
 </html>
