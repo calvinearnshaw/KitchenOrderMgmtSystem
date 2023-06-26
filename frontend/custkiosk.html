@@ -9,13 +9,15 @@
   <body>
     <section class="mainBody">
       <img class="companyLogo" src="media/kiosk/companyLogo/companyLogo.png">
-      <div class="welcomePanel">
+
+      <div class="welcomePanel" id="kioskTitle" style="display:block;">
         <h1>Hey!</h1>
         <h2>What are you ordering today?</h2>
       </div>
-      <div class="categories">
+
+      <div class="categories" id="menuCat" style="display:flex;">
         <!-- Insert shortcut menu options here -->
-        <a class="catCard" id="newItemsCC">
+        <a class="catCard" id="newItemsCC" onclick="showCategory('subcatNewItems')">
           <img src="media/kiosk/catIcons/newItems.png">
           <p>What's New</p>
         </a>
@@ -48,35 +50,69 @@
           <p>Desserts</p>
         </a>
       </div>
-      <div class="popularItems">
+
+      <div class="subcatItems" id="popularItems" style="display:flex;">
         <h2>Popular</h2>
-        <a class="itemCard" id="item-cheeseburger">
+        <a class="itemCard" onclick="addToOrder({desc: 'Cheeseburger', price: 2.49, image: 'media/kiosk/menuItems/burgers/cheeseburger.png'})" id="item-cheeseburger">
           <img src="media/kiosk/menuItems/burgers/cheeseburger.png">
           <p class="itemDesc">Cheeseburger</p>
           <p class="itemPrice">£2.49</p>
         </a>
-        <a class="itemCard" id="item-stackburger">
+        <a class="itemCard" onclick="addToOrder({desc: 'Stack Burger', price: 2.99, image: 'media/kiosk/menuItems/burgers/double-burger.png'})" id="item-stackburger">
           <img src="media/kiosk/menuItems/burgers/double-burger.png">
           <p class="itemDesc">Stack Burger</p>
           <p class="itemPrice">£2.99</p>
         </a>
-        <a class="itemCard" id="item-chknug">
+        <a class="itemCard" onclick="addToOrder({desc: 'Chicken Nuggets', price: 1.99, image: 'media/kiosk/menuItems/chicken/chickennugget.png'})" id="item-chknug">
           <img src="media/kiosk/menuItems/chicken/chickennugget.png">
           <p class="itemDesc">Chicken Nuggets</p>
           <p class="itemPrice">£1.49</p>
         </a>
-        <a class="itemCard" id="item-chkburger">
+        <a class="itemCard" onclick="addToOrder({desc: 'Chicken Burger', price: 2.49, image: 'media/kiosk/menuItems/chicken/chicken-burger.png'})" id="item-chkburger">
           <img src="media/kiosk/menuItems/chicken/chicken-burger.png">
           <p class="itemDesc">Chicken Burger</p>
           <p class="itemPrice">£2.49</p>
         </a>
-        <a class="itemCard" id="item-chkwrap">
+        <a class="itemCard" onclick="addToOrder({desc: 'Chicken Wrap', price: 1.99, image: 'media/kiosk/menuItems/wraps/ranch-chicken-wrap.png'})" id="item-chkwrap">
+          <img src="media/kiosk/menuItems/wraps/ranch-chicken-wrap.png">
+          <p class="itemDesc">Chicken Wrap</p>
+          <p class="itemPrice">£1.99</p>
+        </a>
+      </div>
+
+      <div class="subcatItems" id="subcatNewItems" style="display:none;">
+        <div class="subcatHeading">
+          <button onclick="hideCategory('subcatNewItems')"><</button>
+          <h2>What's New</h2>
+        </div>
+        <a class="itemCard" onclick="addToOrder({desc: 'Cheeseburger', price: 2.49, image: 'media/kiosk/menuItems/burgers/cheeseburger.png'})" id="item-cheeseburger">
+          <img src="media/kiosk/menuItems/burgers/cheeseburger.png">
+          <p class="itemDesc">Cheeseburger</p>
+          <p class="itemPrice">£2.49</p>
+        </a>
+        <a class="itemCard" onclick="addToOrder({desc: 'Stack Burger', price: 2.99, image: 'media/kiosk/menuItems/burgers/double-burger.png'})" id="item-stackburger">
+          <img src="media/kiosk/menuItems/burgers/double-burger.png">
+          <p class="itemDesc">Stack Burger</p>
+          <p class="itemPrice">£2.99</p>
+        </a>
+        <a class="itemCard" onclick="addToOrder({desc: 'Chicken Nuggets', price: 1.99, image: 'media/kiosk/menuItems/chicken/chickennugget.png'})" id="item-chknug">
+          <img src="media/kiosk/menuItems/chicken/chickennugget.png">
+          <p class="itemDesc">Chicken Nuggets</p>
+          <p class="itemPrice">£1.49</p>
+        </a>
+        <a class="itemCard" onclick="addToOrder({desc: 'Chicken Burger', price: 2.49, image: 'media/kiosk/menuItems/chicken/chicken-burger.png'})" id="item-chkburger">
+          <img src="media/kiosk/menuItems/chicken/chicken-burger.png">
+          <p class="itemDesc">Chicken Burger</p>
+          <p class="itemPrice">£2.49</p>
+        </a>
+        <a class="itemCard" onclick="addToOrder({desc: 'Chicken Wrap', price: 1.99, image: 'media/kiosk/menuItems/wraps/ranch-chicken-wrap.png'})" id="item-chkwrap">
           <img src="media/kiosk/menuItems/wraps/ranch-chicken-wrap.png">
           <p class="itemDesc">Chicken Wrap</p>
           <p class="itemPrice">£1.99</p>
         </a>
       </div>
     </section>
+
     <section class="basket" style="display:none;">
       <div class="basketHeading">
         <h2>My Order</h2>
@@ -89,9 +125,10 @@
           <p><b>Total:</b></p>
           <p id="grandTotal">£0.00</p>
         </div>
-        <a id="dispatchOrderBtn" class="orderPymtBtn"><p>Done</p></a>
+        <a id="dispatchOrderBtn" onclick="completeOrder()" class="orderPymtBtn"><p>Done</p></a>
       </div>
     </section>
+
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();

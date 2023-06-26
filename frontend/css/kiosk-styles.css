@@ -9,6 +9,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     height: 100%;
+    min-height: 100vh;
 }
 
 .mainBody {
@@ -74,22 +75,6 @@ body {
     height: 80%;
     margin-left: auto;
     margin-right: auto;
-}
-
-.popularItems {
-    margin-left: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 20px;
-    margin-bottom: 50px;
-    flex-grow: 1;
-    flex-shrink: 1;
-}
-
-.popularItems h2 {
-    font-weight: bold;
-    width: 100%;
 }
 
 .itemCard {
@@ -251,4 +236,39 @@ body {
     margin-top: 15px;
     font-size: 18px;
     font-weight: bold;
+}
+
+.subcatItems {
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 50px;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.subcatHeading {
+    display: flex;
+    width: 100%;
+
+}
+
+.subcatHeading h2 {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.subcatItems h2 {
+    font-weight: bold;
+    width: 100%;
+}
+
+.subcatItems button {
+    background-color: gold;
+    border: none;
+    border-radius: 15px;
+    width: 40px;
+    height: 40px;
 }

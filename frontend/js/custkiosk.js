@@ -1,11 +1,7 @@
 let order = [];
 let orderTotal = 0.00;
 
-let media = {'Cheeseburger': 'media/kiosk/menuItems/burgers/cheeseburger.png',
-    'Stack Burger': 'media/kiosk/menuItems/burgers/double-burger.png',
-    'Chicken Nuggets': 'media/kiosk/menuItems/chicken/chickennugget.png',
-    'Chicken Burger': 'media/kiosk/menuItems/chicken/chicken-burger.png',
-    'Chicken Wrap': 'media/kiosk/menuItems/wraps/ranch-chicken-wrap.png'};
+let dispatchedOrderID = 1;
 
 function addToOrder(item) {
     let orderIndex = -1;
@@ -19,7 +15,7 @@ function addToOrder(item) {
         increaseQty(order[orderIndex].id);
     } else {
         const entryID = `item-${order.length}`;
-        const itemImgUrl = media[item.desc];
+        const itemImgUrl = item.image;
         const basketItem = `
             <div id="${entryID}" class="orderEntry">
               <img src="${itemImgUrl}">
@@ -104,8 +100,6 @@ function decreaseQty(entryID) {
     }
 }
 
-let dispatchedOrderID = 1;
-
 function completeOrder() {
     let htmlOrderRequest = "";
     for (let i = 0; i < order.length; i++) {
@@ -127,26 +121,16 @@ function completeOrder() {
     document.getElementsByClassName('basket')[0].style.display = 'none';
 }
 
-document.getElementById('item-cheeseburger').onclick = function() {
-    addToOrder({desc: 'Cheeseburger', price: 2.49});
+function showCategory(cat) {
+    document.getElementById(cat).style.display = 'flex';
+    document.getElementById('popularItems').style.display = 'none';
+    document.getElementById('menuCat').style.display = 'none';
+    document.getElementById('kioskTitle').style.display = 'none';
 }
 
-document.getElementById('item-stackburger').onclick = function() {
-    addToOrder({desc: 'Stack Burger', price: 2.99});
-}
-
-document.getElementById('item-chknug').onclick = function() {
-    addToOrder({desc: 'Chicken Nuggets', price: 1.49});
-}
-
-document.getElementById('item-chkburger').onclick = function() {
-    addToOrder({desc: 'Chicken Burger', price: 2.49});
-}
-
-document.getElementById('item-chkwrap').onclick = function() {
-    addToOrder({desc: 'Chicken Wrap', price: 1.99});
-}
-
-document.getElementById('dispatchOrderBtn').onclick = function() {
-    completeOrder();
+function hideCategory(cat) {
+    document.getElementById(cat).style.display = 'none';
+    document.getElementById('popularItems').style.display = 'flex';
+    document.getElementById('menuCat').style.display = 'flex';
+    document.getElementById('kioskTitle').style.display = 'block';
 }
